@@ -1,0 +1,15 @@
+---
+- name: Allow http port
+  community.general.ufw:
+    rule: allow
+    port: 80
+    proto: tcp
+
+- name: Run nginx app image
+  docker_container:
+    name: "{{ container_name }}"
+    recreate: yes
+    image: "{{ container_image }}"
+    restart_policy: unless-stopped
+    ports:
+      - "80:80"

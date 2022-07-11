@@ -1,0 +1,7 @@
+---
+ansible_user: root
+ansible_ssh_private_key: /root/.ssh/id_rsa
+container_name: nginx-app
+container_image: yorni/nginx-auth-image
+basic_user: "{{ vault_basic_user }}"
+basic_password: "{{ vault_basic_password }}"
