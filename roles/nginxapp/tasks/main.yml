@@ -13,3 +13,9 @@
     restart_policy: unless-stopped
     ports:
       - "80:80"
+
+  - name: Check nginx accessible
+      ansible.builtin.uri:
+        url: "http://{{ ansible_ssh_host }}"
+        method: GET
+        status_code: 200
